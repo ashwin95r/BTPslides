@@ -21,11 +21,11 @@ ashwin2007ray@gmail.com
 
 * What is DGraph
 
-* Centralised
+* Centralised Version
 
 .image diagrams/Centralised.jpg _ 700
 
-* Distributed
+* Distributed Version
 
 .image diagrams/Distributed.jpg _ 700
 
@@ -35,7 +35,6 @@ ashwin2007ray@gmail.com
 
 * Evaluation 
 
-
-.image graphs/cores_lat_16
+* Conclusion
 
 * Results
