@@ -1,0 +1,33 @@
+DGraph
+IIT Madras
+17 May 2016
+Tags: go golang dgraph graph
+
+BTP by Ashwin
+Guide - Prof. Krishna Sivalingam
+Author of DGraph - Manish Rai Jain
+ashwin2007ray@gmail.com
+
+* What is a Graph
+
+- Abstract data type to represent relationships between objects.
+- Made up of Entities and Edges. Directed edge in triple format:
+		Entity      --attribute-->  Entity/Value
+		[Tom Hanks] --married_to->  [Rita Wilson]
+		[Tom Hanks] --born_on---->  [July 9, 1956]
+- Popular graphs: Facebook Social Graph, Google Knowledge Graph.
+
+.image graph.png
+
+* What is DGraph
+
+* Components
+
+* Making it Distributed
+
+* Evaluation 
+
+
+.image graphs/cores_lat_16
+
+* Results
