@@ -23,10 +23,11 @@ ashwin2007ray@gmail.com
 
 * Centralised
 
-.image diagrams/Centralised.jpg
+.image diagrams/Centralised.jpg _ 700
 
 * Distributed
-.image diagrams/Distributed.jpg
+
+.image diagrams/Distributed.jpg _ 700
 
 * Components
 
