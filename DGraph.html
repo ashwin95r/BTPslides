@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://localhost:3999/dgraph.slide#2 -->
+<html class="gr__localhost"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>DGraph</title>
+    
+    <script src="./DGraph_files/slides.js"></script><style type="text/css"></style>
+    <script>
+      
+      if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-11222381-6"]);
+        _gaq.push(["b._setAccount", "UA-49880327-6"]);
+        window.trackPageview = function() {
+          _gaq.push(["_trackPageview", location.pathname+location.hash]);
+          _gaq.push(["b._trackPageview", location.pathname+location.hash]);
+        };
+        window.trackPageview();
+        window.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
+          _gaq.push(["_trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+          _gaq.push(["b._trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+        };
+      }
+    </script>
+  <meta name="viewport" content="width=1100,height=750"><meta name="apple-mobile-web-app-capable" content="yes"></head>
+
+  <body style="display: none" data-gr-c-s-loaded="true" class="loaded"><div id="StayFocusd-infobar" style="display:none;">
+    <img src="chrome-extension://laankejkbhbdhmipfmgcngdelahlfoji/common/img/eye_19x19_red.png">
+    <span id="StayFocusd-infobar-msg"></span>
+    <span id="StayFocusd-infobar-links">
+        <a id="StayFocusd-infobar-never-show">hide forever</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a id="StayFocusd-infobar-hide">hide once</a>
+    </span>
+</div>
+
+    <section class="slides layout-widescreen">
+      
+      <article class="past">
+        <h1>DGraph</h1>
+        <h3>IIT Madras</h3>
+        <h3>17 May 2016</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Ashwin
+  </p>
+  
+
+          </div>
+        
+      </article>
+      
+  
+  
+      <article class="current">
+      
+        <h3>Acknowledgements</h3>
+        
+  
+  <p>
+    Thank you :
+<br>
+
+    - <b>Prof. Krishna Sivalingam</b> : BTP Guide
+<br>
+
+    - <b>Manish Rai Jain</b> : Author of DGraph
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article class="next">
+      
+        <h2>Motivation</h2>
+      
+      </article>
+  
+  
+  
+      <article class="far-next">
+      
+        <h3>Background</h3>
+        
+  <ul>
+  
+    <li>Flatbuffers</li>
+  
+    <li>GraphQL</li>
+  
+    <li>RDF</li>
+  
+    <li>Sharding</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h2>Flatbuffers</h2>
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h2>GraphQL</h2>
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h2>RDF</h2>
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h2>Sharding</h2>
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h2>What is DGraph</h2>
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Centralised Version</h3>
+        
+<div class="image">
+  <img src="./DGraph_files/Centralised.jpg" width="700">
+</div>
+
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Distributed Version</h3>
+        
+<div class="image">
+  <img src="./DGraph_files/Distributed.jpg" width="700">
+</div>
+
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h2>Components</h2>
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h2>Making it Distributed</h2>
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Evaluation </h3>
+        
+  <ul>
+  
+    <li>Was done on GCE (Google Compute Engine) instances</li>
+  
+    <li>Metrics : Throughput, Latency [mean, 50 and 95 percentile]</li>
+  
+    <li>Parameters : Number of nodes in a cluster, Number of parallel connections, Number of cores in an instance</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h2>Freebase Film Dataset</h2>
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Latency Comparison</h3>
+        
+<div class="image">
+  <img src="./DGraph_files/cores_lat_95.jpg" width="700">
+</div>
+
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Latency Comparison</h3>
+        
+<div class="image">
+  <img src="./DGraph_files/dist_lat_95.jpg" width="700">
+</div>
+
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Throughput Comparison</h3>
+        
+<div class="image">
+  <img src="./DGraph_files/cores_thru.jpg" width="700">
+</div>
+
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Throughput Comparison</h3>
+        
+<div class="image">
+  <img src="./DGraph_files/topo_thru.jpg" width="700">
+</div>
+
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h2>Results</h2>
+      
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Conclusion</h3>
+        
+  <ul>
+  
+    <li>Performance of Distributed version is better under higher loads</li>
+  
+    <li>Horizontal scalability is important in Modern databases and is supported through sharding</li>
+  
+    <li></li>
+  
+  </ul>
+
+  
+  <p>
+    -
+  </p>
+  
+
+      
+      </article>
+  
+  
+
+      <article class="">
+        <h3>Thank you</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Ashwin
+  </p>
+  
+<p class="link"><a href="mailto:ashwin2007ray@gmail.com" target="_blank">ashwin2007ray@gmail.com</a></p>
+          </div>
+        
+      </article>
+
+    <div class="slide-area" id="prev-slide-area"></div><div class="slide-area" id="next-slide-area"></div></section>
+
+    <div id="help" style="display: none;">
+      Use the left and right arrow keys or click the left and right
+      edges of the page to navigate between slides.<br>
+      (Press 'H' or navigate to hide this message.)
+    </div>
+
+    
+    <script src="./DGraph_files/play.js"></script>
+    
+
+    <script>
+      (function() {
+        
+        if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        }
+      })();
+    </script>
+  
+
+<link rel="stylesheet" type="text/css" href="./DGraph_files/css"><link rel="stylesheet" type="text/css" href="./DGraph_files/styles.css"></body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

@@ -1,0 +1,15 @@
+    SubGraph [result uid = "0xbb0de646eaf32b74"]
+      |
+    Children
+      |
+      --> SubGraph [Attr = "type.object.name.en"]
+      --> SubGraph [Attr = "film.director.film"]
+             |
+           Children
+             |
+             --> SubGraph [Attr = "film.film.genre"]
+                   |
+                 Children
+                   |
+                   --> SubGraph [Attr = "type.object.name.en"]
+

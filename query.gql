@@ -1,0 +1,10 @@
+{
+  me(_xid_: m.06pj8) {
+    type.object.name.en
+    film.director.film  {
+      film.film.genre {
+        type.object.name.en
+      }
+    }
+  }
+}

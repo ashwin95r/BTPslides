@@ -12,50 +12,139 @@ Thank you :
 - *Prof.*Krishna*Sivalingam* : BTP Guide
 - *Manish*Rai*Jain* : Author of DGraph
 
+
 * Motivation
+
+- Usage of graph databases has grown significantly in a world where *Big*Data* is now a common term. 
+- Applications in 
+	- Social networks
+	- User behaviour analysis
+	- E-commerce recommendations
+	- Internet of things
+	- Medical and DNA research
+	- Search engines
+
+* Overview
+	
+- Graph data structures store objects and the relationships between them
+
+- Relational databases : Large number of table joins to find the relationships. Compute time required increases as the number of results increases
+- Graph databases store the relationships as first class citizens. Accessing connections is an efficient, constant-time operation
+
+* What is DGraph
+
+- Native, Distributed, Low latency, High throughput Graph Database
+- Written in Go-lang
+	- Highly Concurrant (go-routines, channels)
+	- Performance similar to C++
+	- Compiled and doesn't require specific environments to run on
+
+.image dgraph_time_demo.png _ 720
 
 * Background
 
 - Flatbuffers
-- GraphQL
 - RDF
 - Sharding
+- GraphQL
 
 * Flatbuffers
 
-* GraphQL
+- Efficient cross-platform serialisation library created by Google for performance critical application
+- DGraph uses Flatbuffers for all the communication, storage and internal representation.
+- Characteristics of Flatbuffers which make it very useful are:
+	- Access to serialised data without processing or unpacking
+	- Memory efficiency and speed
+	- Strongly typed 
 
 * RDF
 
+- Resource Description Framework
+- DGraph's input is in RDF format
+- Effective format to represent *Subject-Predicate-Object* relationships
+- A sample RDF line
+	<Alice>	<friendof>	<Bob>	.
+- A real world dataset would have millions if not billions of such lines which represent the connections
+
 * Sharding
 
-* What is DGraph
+* GraphQL
+- Is a query language and execution engine developed at Facebook.
+- Limited support. Lexing and parsing done by DGraph to convert into internal query representation.
+- By v1.0, most features of GraphQL would be supported.
+- Example : Query for genre of all the movies directed by Steven Spielberg.
+.code query.gql
 
 * Centralised Version
 
 .image diagrams/Centralised.jpg _ 700
 
+* Making it Distributed
+
+- Split loader into 2 phases : UID Assigner and Loader
+- Enable communication among servers through RPC and tcp connection pools
+- Batch writes which reduce the run-time of Loader
+
 * Distributed Version
 
 .image diagrams/Distributed.jpg _ 700
 
-* Components
+* Query processing
+- GraphQL query received. Parsed into internal query representation
+- Make network calls to process the query (linearly proportional to number of predicates/attributes)
+    type SubGraph struct {
+      Attr     string
+      Children []*SubGraph
+      query  []byte
+      result []byte
+    }
+* Query processing
 
-* Making it Distributed
+Subgraph format
+.code subgraph
+
+* Demo
+
+.link http://www.dgraph.io DGraph 
+
+
+* Freebase Film Dataset
+
+- Freebase is an online collection of structured data
+- Includes information about 478,936 actors, 98,063 directors, films produced worldwide, genres, ratings
+- Some examples of the predicates in Freebase film data are :
+	- type.object.name.en : Connects the object to its English name
+	- film.actor.film : Connects an actor to the film objects he has acted in
+- Some example of entries in the dataset are :
+	- <m.0102j2vq> <film.actor.film> <m.011kyqsq> .
+	- <m.050llt> <type.object.name> "Aishwarya Rai Bachchan"@hr .
+	- <m.0bxtg> <type.object.name> "Tom Hanks"@es .
 
 * Evaluation 
 
 - Was done on GCE (Google Compute Engine) instances
-- Metrics : Throughput, Latency [mean, 50 and 95 percentile]
-- Parameters : Number of nodes in a cluster, Number of parallel connections, Number of cores in an instance
 
-* Freebase Film Dataset
+- *Metrics* 
 
-* Latency Comparison
+	- Throughput
+	- Latency [mean, 50 and 95 percentile]
+
+- *Parameters* 
+
+	- Number of nodes in a cluster
+	- Number of parallel connections
+	- Number of cores in an instance
+
+- *Queries*
+	- The queries used to test the performance were about 478,936 Actors and 98,063 Directors
+	- For each request, a query is randomly chosen
+
+
+* 95 Percentile Latency Comparison : Varying Number of Cores
 
 .image graphs/cores_lat_95.jpg _ 700
 
-* Latency Comparison
+* 95 Percentile Latency Comparison : Varying Number of Nodes
 
 .image graphs/dist_lat_95.jpg _ 700
 
@@ -67,11 +156,14 @@ Thank you :
 
 .image graphs/topo_thru.jpg _ 700
 
+* Fine Grained Locks
+
 * Results
 
+
 * Conclusion
-- Performance of Distributed version is better under higher loads
-- Horizontal scalability is important in Modern databases and is supported through sharding
-- 
--
+- Performance of Distributed version is better under higher loads [A couple hundred parallel connections]
+- A single machine can only handle so much
+- Hence, horizontal scalability is important in modern databases and is supported through sharding
+
 
