@@ -3,21 +3,31 @@ IIT Madras
 17 May 2016
 Tags: go golang dgraph graph
 
-BTP by Ashwin
-Guide - Prof. Krishna Sivalingam
-Author of DGraph - Manish Rai Jain
+Ashwin
 ashwin2007ray@gmail.com
 
-* What is a Graph
+* Acknowledgements
 
-- Abstract data type to represent relationships between objects.
-- Made up of Entities and Edges. Directed edge in triple format:
-		Entity      --attribute-->  Entity/Value
-		[Tom Hanks] --married_to->  [Rita Wilson]
-		[Tom Hanks] --born_on---->  [July 9, 1956]
-- Popular graphs: Facebook Social Graph, Google Knowledge Graph.
+Thank you :
+- *Prof.*Krishna*Sivalingam* : BTP Guide
+- *Manish*Rai*Jain* : Author of DGraph
 
-.image graph.png
+* Motivation
+
+* Background
+
+- Flatbuffers
+- GraphQL
+- RDF
+- Sharding
+
+* Flatbuffers
+
+* GraphQL
+
+* RDF
+
+* Sharding
 
 * What is DGraph
 
@@ -35,6 +45,33 @@ ashwin2007ray@gmail.com
 
 * Evaluation 
 
-* Conclusion
+- Was done on GCE (Google Compute Engine) instances
+- Metrics : Throughput, Latency [mean, 50 and 95 percentile]
+- Parameters : Number of nodes in a cluster, Number of parallel connections, Number of cores in an instance
+
+* Freebase Film Dataset
+
+* Latency Comparison
+
+.image graphs/cores_lat_95.jpg _ 700
+
+* Latency Comparison
+
+.image graphs/dist_lat_95.jpg _ 700
+
+* Throughput Comparison
+
+.image graphs/cores_thru.jpg _ 700
+
+* Throughput Comparison
+
+.image graphs/topo_thru.jpg _ 700
 
 * Results
+
+* Conclusion
+- Performance of Distributed version is better under higher loads
+- Horizontal scalability is important in Modern databases and is upported through sharding
+- 
+-
+
