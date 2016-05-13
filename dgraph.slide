@@ -9,8 +9,7 @@ ashwin2007ray@gmail.com
 * Acknowledgements
 
 Thank you :
-- *Prof.*Krishna*Sivalingam* : BTP Guide
-- *Manish*Rai*Jain* : Author of DGraph
+*Manish*Rai*Jain*, *Prof.*Krishna*Sivalingam*
 
 
 * Motivation
@@ -67,6 +66,11 @@ Thank you :
 - A real world dataset would have millions if not billions of such lines which represent the connections
 
 * Sharding
+
+- Partitioning of a dataset into multiple data chunks based on some mathematical function
+- *Types*of*sharding* 
+- *Range-based*sharding* : where the different ranges of the dataset are mapped to different shards
+- *Modulo*sharding* : where the key name is passed to a hash function to get an integer and this integer’s Modulo with the number of shards
 
 * GraphQL
 - Is a query language and execution engine developed at Facebook.
@@ -158,12 +162,30 @@ Subgraph format
 
 * Fine Grained Locks
 
+- Locks are obtained over individual posting lists and not over the entire database
+- Concurrent access to different posting lists could be made which increases the throughput
+- When the queries are varied, the performance gets better
+
 * Results
 
+- As the cumulative computational power that is available increases, the performance of the database is better
+- The recommendation for running DGraph would be:
+	• Use as many cores as possible
+	• Have the servers close by geographically so that network latency is reduced
+	• Larger sized RAMs are not a necessity in server but are important in case of
+	loader
+	• Distribute the data among servers and query them in a round-robin fashion for
+	greater throughput
 
 * Conclusion
+
 - Performance of Distributed version is better under higher loads [A couple hundred parallel connections]
 - A single machine can only handle so much
 - Hence, horizontal scalability is important in modern databases and is supported through sharding
 
+* Further Work
 
+- Moving shards across machines
+- Fault tolerance
+- Replication
+- Supporting GraphQL features

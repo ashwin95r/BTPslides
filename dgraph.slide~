@@ -68,6 +68,11 @@ Thank you :
 
 * Sharding
 
+- Partitioning of a dataset into multiple data chunks based on some mathematical function
+- *Types*of*sharding* 
+- *Range-based*sharding* : where the different ranges of the dataset are mapped to different shards
+- *Modulo*sharding* : where the key name is passed to a hash function to get an integer and this integer’s Modulo with the number of shards
+
 * GraphQL
 - Is a query language and execution engine developed at Facebook.
 - Limited support. Lexing and parsing done by DGraph to convert into internal query representation.
@@ -107,6 +112,19 @@ Subgraph format
 
 .link http://www.dgraph.io DGraph 
 
+
+* Freebase Film Dataset
+
+- Freebase is an online collection of structured data
+- Includes information about 478,936 actors, 98,063 directors, films produced worldwide, genres, ratings
+- Some examples of the predicates in Freebase film data are :
+	- type.object.name.en : Connects the object to its English name
+	- film.actor.film : Connects an actor to the film objects he has acted in
+- Some example of entries in the dataset are :
+	- <m.0102j2vq> <film.actor.film> <m.011kyqsq> .
+	- <m.050llt> <type.object.name> "Aishwarya Rai Bachchan"@hr .
+	- <m.0bxtg> <type.object.name> "Tom Hanks"@es .
+
 * Evaluation 
 
 - Was done on GCE (Google Compute Engine) instances
@@ -127,19 +145,6 @@ Subgraph format
 	- For each request, a query is randomly chosen
 
 
-* Freebase Film Dataset
-
-- Freebase is an online collection of structured data
-- Includes information about 478,936 actors, 98,063 directors, films produced worldwide, genres, ratings
-- Some examples of the predicates in Freebase film data are :
-	- type.object.name.en : Connects the object to its English name
-	- film.actor.film : Connects an actor to the film objects he has acted in
-- Some example of entries in the dataset are :
-	- <m.0102j2vq> <film.actor.film> <m.011kyqsq> .
-	- <m.050llt> <type.object.name> "Aishwarya Rai Bachchan"@hr .
-	- <m.0bxtg> <type.object.name> "Tom Hanks"@es .
-
-
 * 95 Percentile Latency Comparison : Varying Number of Cores
 
 .image graphs/cores_lat_95.jpg _ 700
@@ -158,12 +163,30 @@ Subgraph format
 
 * Fine Grained Locks
 
+- Locks are obtained over individual posting lists and not over the entire database
+- Concurrent access to different posting lists could be made which increases the throughput
+- When the queries are varied, the performance gets better
+
 * Results
 
+- As the cumulative computational power that is available increases, the performance of the database is better
+- The recommendation for running DGraph would be:
+	• Use as many cores as possible
+	• Have the servers close by geographically so that network latency is reduced
+	• Larger sized RAMs are not a necessity in server but are important in case of
+	loader
+	• Distribute the data among servers and query them in a round-robin fashion for
+	greater throughput
 
 * Conclusion
+
 - Performance of Distributed version is better under higher loads [A couple hundred parallel connections]
 - A single machine can only handle so much
 - Hence, horizontal scalability is important in modern databases and is supported through sharding
 
+* Further Work
 
+- Moving shards across machines
+- Fault tolerance
+- Replication
+- Supporting GraphQL features
