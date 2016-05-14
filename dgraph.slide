@@ -1,5 +1,5 @@
-DGraph
-IIT Madras
+﻿DGraph : A Graph Database
+Guide : Prof. Krishna Sivalingam
 17 May 2016
 Tags: go golang dgraph graph
 
@@ -8,8 +8,18 @@ ashwin2007ray@gmail.com
 
 * Acknowledgements
 
-Thank you :
-*Manish*Rai*Jain*, *Prof.*Krishna*Sivalingam*
+- *Manish*Rai*Jain* : Author of DGraph, Founder of DGraph Labs, ex-Google and ex-Quora Engineer
+
+* What is DGraph
+
+- Open Source
+- Native, Distributed, Low latency, High throughput Graph Database
+- Written in Go-lang
+	- Highly Concurrent (go-routines, channels)
+	- Performance similar to C++
+	- Compiled and does not require specific environments to run on
+
+.image dgraph_time_demo.png _ 630
 
 
 * Motivation
@@ -23,22 +33,21 @@ Thank you :
 	- Medical and DNA research
 	- Search engines
 
+* Problem Statement
+
+- Making an existing open-source graph database project DGraph to support distributed operation
+	- Support distributed data loading
+	- Support communication among the servers 
+	- Minimise the network calls made to process a query
+
+.caption _DGraph_ by [[http://github.com/dgraph-io/dgraph DGraph][DGraph]]
+
 * Overview
 	
 - Graph data structures store objects and the relationships between them
 
 - Relational databases : Large number of table joins to find the relationships. Compute time required increases as the number of results increases
 - Graph databases store the relationships as first class citizens. Accessing connections is an efficient, constant-time operation
-
-* What is DGraph
-
-- Native, Distributed, Low latency, High throughput Graph Database
-- Written in Go-lang
-	- Highly Concurrant (go-routines, channels)
-	- Performance similar to C++
-	- Compiled and doesn't require specific environments to run on
-
-.image dgraph_time_demo.png _ 720
 
 * Background
 
@@ -73,10 +82,10 @@ Thank you :
 - *Modulo*sharding* : where the key name is passed to a hash function to get an integer and this integer’s Modulo with the number of shards
 
 * GraphQL
-- Is a query language and execution engine developed at Facebook.
-- Limited support. Lexing and parsing done by DGraph to convert into internal query representation.
-- By v1.0, most features of GraphQL would be supported.
-- Example : Query for genre of all the movies directed by Steven Spielberg.
+- Is a query language and execution engine developed at Facebook
+- Limited support. Lexing and parsing done by DGraph to convert into internal query representation
+- By v1.0, most features of GraphQL would be supported
+- Example : Query for genre of all the movies directed by Steven Spielberg
 .code query.gql
 
 * Centralised Version
@@ -94,6 +103,7 @@ Thank you :
 .image diagrams/Distributed.jpg _ 700
 
 * Query processing
+
 - GraphQL query received. Parsed into internal query representation
 - Make network calls to process the query (linearly proportional to number of predicates/attributes)
     type SubGraph struct {
@@ -110,7 +120,6 @@ Subgraph format
 * Demo
 
 .link http://www.dgraph.io DGraph 
-
 
 * Freebase Film Dataset
 
@@ -144,21 +153,38 @@ Subgraph format
 	- For each request, a query is randomly chosen
 
 
-* 95 Percentile Latency Comparison : Varying Number of Cores
+* Throughput Comparison
 
-.image graphs/cores_lat_95.jpg _ 700
-
-* 95 Percentile Latency Comparison : Varying Number of Nodes
-
-.image graphs/dist_lat_95.jpg _ 700
+.image New_graphs/throughput/topo_thru.jpg _ 700
 
 * Throughput Comparison
 
-.image graphs/cores_thru.jpg _ 700
+.image New_graphs/throughput/cores_thru.jpg _ 700
 
-* Throughput Comparison
+* Latency Comparison
 
-.image graphs/topo_thru.jpg _ 700
+.image New_graphs/latency_cores/cores_lat_mean.jpg _ 700
+
+* Latency Comparison
+
+.image New_graphs/latency_cores/cores_lat_50.jpg _ 700
+
+* Latency Comparison
+
+.image New_graphs/latency_cores/cores_lat_95.jpg _ 700
+
+* Latency Comparison
+
+.image New_graphs/latency_dist/dist_lat_mean.jpg _ 700
+
+* Latency Comparison
+
+.image New_graphs/latency_dist/dist_lat_50.jpg _ 700
+
+* Latency Comparison
+
+.image New_graphs/latency_dist/dist_lat_95.jpg _ 700
+
 
 * Fine Grained Locks
 
@@ -177,7 +203,7 @@ Subgraph format
 	• Distribute the data among servers and query them in a round-robin fashion for
 	greater throughput
 
-* Conclusion
+* Conclusions
 
 - Performance of Distributed version is better under higher loads [A couple hundred parallel connections]
 - A single machine can only handle so much

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0036)http://localhost:3999/dgraph.slide#2 -->
+<!-- saved from url=(0036)http://localhost:3999/dgraph.slide#1 -->
 <html class="gr__localhost"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>DGraph</title>
     
@@ -34,7 +34,7 @@
 
     <section class="slides layout-widescreen">
       
-      <article class="past">
+      <article class="current">
         <h1>DGraph</h1>
         <h3>IIT Madras</h3>
         <h3>17 May 2016</h3>
@@ -53,7 +53,7 @@
       
   
   
-      <article class="current">
+      <article class="next">
       
         <h3>Acknowledgements</h3>
         
@@ -62,10 +62,7 @@
     Thank you :
 <br>
 
-    - <b>Prof. Krishna Sivalingam</b> : BTP Guide
-<br>
-
-    - <b>Manish Rai Jain</b> : Author of DGraph
+    <b>Manish Rai Jain</b>, <b>Prof. Krishna Sivalingam</b>
   </p>
   
 
@@ -74,27 +71,47 @@
   
   
   
-      <article class="next">
+      <article class="far-next">
       
-        <h2>Motivation</h2>
+        <h3>Motivation</h3>
+        
+  <ul>
+  
+    <li>Usage of graph databases has grown significantly in a world where <b>Big Data</b> is now a common term. </li>
+  
+    <li>Applications in </li>
+  
+  </ul>
+
+  
+  <div class="code"><pre>- Social networks
+- User behaviour analysis
+- E-commerce recommendations
+- Internet of things
+- Medical and DNA research
+- Search engines</pre></div>
+  
+
       
       </article>
   
   
   
-      <article class="far-next">
+      <article>
       
-        <h3>Background</h3>
+        <h3>Overview</h3>
         
   <ul>
   
-    <li>Flatbuffers</li>
+    <li>Graph data structures store objects and the relationships between them</li>
   
-    <li>GraphQL</li>
+  </ul>
+
+  <ul>
   
-    <li>RDF</li>
+    <li>Relational databases : Large number of table joins to find the relationships. Compute time required increases as the number of results increases</li>
   
-    <li>Sharding</li>
+    <li>Graph databases store the relationships as first class citizens. Accessing connections is an efficient, constant-time operation</li>
   
   </ul>
 
@@ -103,47 +120,171 @@
   
   
   
-      <article class="">
+      <article>
       
-        <h2>Flatbuffers</h2>
-      
-      </article>
+        <h3>What is DGraph</h3>
+        
+  <ul>
   
+    <li>Native, Distributed, Low latency, High throughput Graph Database</li>
   
+    <li>Written in Go-lang</li>
   
-      <article class="">
-      
-        <h2>GraphQL</h2>
-      
-      </article>
+  </ul>
+
   
+  <div class="code"><pre>- Highly Concurrant (go-routines, channels)
+- Performance similar to C++
+- Compiled and doesn't require specific environments to run on</pre></div>
   
-  
-      <article class="">
-      
-        <h2>RDF</h2>
-      
-      </article>
-  
-  
-  
-      <article class="">
-      
-        <h2>Sharding</h2>
+
+<div class="image">
+  <img src="./DGraph_files/dgraph_time_demo.png" width="720">
+</div>
+
       
       </article>
   
   
   
-      <article class="">
+      <article>
       
-        <h2>What is DGraph</h2>
+        <h3>Background</h3>
+        
+  <ul>
+  
+    <li>Flatbuffers</li>
+  
+    <li>RDF</li>
+  
+    <li>Sharding</li>
+  
+    <li>GraphQL</li>
+  
+  </ul>
+
       
       </article>
   
   
   
-      <article class="">
+      <article>
+      
+        <h3>Flatbuffers</h3>
+        
+  <ul>
+  
+    <li>Efficient cross-platform serialisation library created by Google for performance critical application</li>
+  
+    <li>DGraph uses Flatbuffers for all the communication, storage and internal representation.</li>
+  
+    <li>Characteristics of Flatbuffers which make it very useful are:</li>
+  
+  </ul>
+
+  
+  <div class="code"><pre>- Access to serialised data without processing or unpacking
+- Memory efficiency and speed
+- Strongly typed</pre></div>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>RDF</h3>
+        
+  <ul>
+  
+    <li>Resource Description Framework</li>
+  
+    <li>DGraph's input is in RDF format</li>
+  
+    <li>Effective format to represent <b>Subject-Predicate-Object</b> relationships</li>
+  
+    <li>A sample RDF line</li>
+  
+  </ul>
+
+  
+  <div class="code"><pre>&lt;Alice&gt;    &lt;friendof&gt;    &lt;Bob&gt;    .</pre></div>
+  
+
+  <ul>
+  
+    <li>A real world dataset would have millions if not billions of such lines which represent the connections</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Sharding</h3>
+        
+  <ul>
+  
+    <li>Partitioning of a dataset into multiple data chunks based on some mathematical function</li>
+  
+    <li><b>Types of sharding</b> </li>
+  
+    <li><b>Range-based sharding</b> : where the different ranges of the dataset are mapped to different shards</li>
+  
+    <li><b>Modulo sharding</b> : where the key name is passed to a hash function to get an integer and this integer’s Modulo with the number of shards</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>GraphQL</h3>
+        
+  <ul>
+  
+    <li>Is a query language and execution engine developed at Facebook.</li>
+  
+    <li>Limited support. Lexing and parsing done by DGraph to convert into internal query representation.</li>
+  
+    <li>By v1.0, most features of GraphQL would be supported.</li>
+  
+    <li>Example : Query for genre of all the movies directed by Steven Spielberg.</li>
+  
+  </ul>
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="1">{</span>
+<span num="2">  me(_xid_: m.06pj8) {</span>
+<span num="3">    type.object.name.en</span>
+<span num="4">    film.director.film  {</span>
+<span num="5">      film.film.genre {</span>
+<span num="6">        type.object.name.en</span>
+<span num="7">      }</span>
+<span num="8">    }</span>
+<span num="9">  }</span>
+<span num="10">}</span>
+</pre>
+
+
+</div>
+
+      
+      </article>
+  
+  
+  
+      <article>
       
         <h3>Centralised Version</h3>
         
@@ -156,7 +297,26 @@
   
   
   
-      <article class="">
+      <article>
+      
+        <h3>Making it Distributed</h3>
+        
+  <ul>
+  
+    <li>Split loader into 2 phases : UID Assigner and Loader</li>
+  
+    <li>Enable communication among servers through RPC and tcp connection pools</li>
+  
+    <li>Batch writes which reduce the run-time of Loader</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article>
       
         <h3>Distributed Version</h3>
         
@@ -169,23 +329,115 @@
   
   
   
-      <article class="">
+      <article>
       
-        <h2>Components</h2>
+        <h3>Query processing</h3>
+        
+  <ul>
+  
+    <li>GraphQL query received. Parsed into internal query representation</li>
+  
+    <li>Make network calls to process the query (linearly proportional to number of predicates/attributes)</li>
+  
+  </ul>
+
+  
+  <div class="code"><pre>type SubGraph struct {
+  Attr     string
+  Children []*SubGraph
+  query  []byte
+  result []byte
+}</pre></div>
+  
+
       
       </article>
   
   
   
-      <article class="">
+      <article>
       
-        <h2>Making it Distributed</h2>
+        <h3>Query processing</h3>
+        
+  
+  <p>
+    Subgraph format
+  </p>
+  
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="1">SubGraph [result uid = "0xbb0de646eaf32b74"]</span>
+<span num="2">  |</span>
+<span num="3">Children</span>
+<span num="4">  |</span>
+<span num="5">  --&gt; SubGraph [Attr = "type.object.name.en"]</span>
+<span num="6">  --&gt; SubGraph [Attr = "film.director.film"]</span>
+<span num="7">         |</span>
+<span num="8">       Children</span>
+<span num="9">         |</span>
+<span num="10">         --&gt; SubGraph [Attr = "film.film.genre"]</span>
+<span num="11">               |</span>
+<span num="12">             Children</span>
+<span num="13">               |</span>
+<span num="14">               --&gt; SubGraph [Attr = "type.object.name.en"]</span>
+</pre>
+
+
+</div>
+
       
       </article>
   
   
   
-      <article class="">
+      <article>
+      
+        <h3>Demo</h3>
+        <p class="link"><a href="http://www.dgraph.io/" target="_blank">DGraph</a></p>
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Freebase Film Dataset</h3>
+        
+  <ul>
+  
+    <li>Freebase is an online collection of structured data</li>
+  
+    <li>Includes information about 478,936 actors, 98,063 directors, films produced worldwide, genres, ratings</li>
+  
+    <li>Some examples of the predicates in Freebase film data are :</li>
+  
+  </ul>
+
+  
+  <div class="code"><pre>- type.object.name.en : Connects the object to its English name
+- film.actor.film : Connects an actor to the film objects he has acted in</pre></div>
+  
+
+  <ul>
+  
+    <li>Some example of entries in the dataset are :</li>
+  
+  </ul>
+
+  
+  <div class="code"><pre>- &lt;m.0102j2vq&gt; &lt;film.actor.film&gt; &lt;m.011kyqsq&gt; .
+- &lt;m.050llt&gt; &lt;type.object.name&gt; "Aishwarya Rai Bachchan"@hr .
+- &lt;m.0bxtg&gt; &lt;type.object.name&gt; "Tom Hanks"@es .</pre></div>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
       
         <h3>Evaluation </h3>
         
@@ -193,28 +445,50 @@
   
     <li>Was done on GCE (Google Compute Engine) instances</li>
   
-    <li>Metrics : Throughput, Latency [mean, 50 and 95 percentile]</li>
+  </ul>
+
+  <ul>
   
-    <li>Parameters : Number of nodes in a cluster, Number of parallel connections, Number of cores in an instance</li>
+    <li><b>Metrics</b> </li>
   
   </ul>
+
+  
+  <div class="code"><pre>- Throughput
+- Latency [mean, 50 and 95 percentile]</pre></div>
+  
+
+  <ul>
+  
+    <li><b>Parameters</b> </li>
+  
+  </ul>
+
+  
+  <div class="code"><pre>- Number of nodes in a cluster
+- Number of parallel connections
+- Number of cores in an instance</pre></div>
+  
+
+  <ul>
+  
+    <li><b>Queries</b></li>
+  
+  </ul>
+
+  
+  <div class="code"><pre>- The queries used to test the performance were about 478,936 Actors and 98,063 Directors
+- For each request, a query is randomly chosen</pre></div>
+  
 
       
       </article>
   
   
   
-      <article class="">
+      <article>
       
-        <h2>Freebase Film Dataset</h2>
-      
-      </article>
-  
-  
-  
-      <article class="">
-      
-        <h3>Latency Comparison</h3>
+        <h3>95 Percentile Latency Comparison : Varying Number of Cores</h3>
         
 <div class="image">
   <img src="./DGraph_files/cores_lat_95.jpg" width="700">
@@ -225,9 +499,9 @@
   
   
   
-      <article class="">
+      <article>
       
-        <h3>Latency Comparison</h3>
+        <h3>95 Percentile Latency Comparison : Varying Number of Nodes</h3>
         
 <div class="image">
   <img src="./DGraph_files/dist_lat_95.jpg" width="700">
@@ -238,7 +512,7 @@
   
   
   
-      <article class="">
+      <article>
       
         <h3>Throughput Comparison</h3>
         
@@ -251,7 +525,7 @@
   
   
   
-      <article class="">
+      <article>
       
         <h3>Throughput Comparison</h3>
         
@@ -264,40 +538,92 @@
   
   
   
-      <article class="">
+      <article>
       
-        <h2>Results</h2>
+        <h3>Fine Grained Locks</h3>
+        
+  <ul>
+  
+    <li>Locks are obtained over individual posting lists and not over the entire database</li>
+  
+    <li>Concurrent access to different posting lists could be made which increases the throughput</li>
+  
+    <li>When the queries are varied, the performance gets better</li>
+  
+  </ul>
+
       
       </article>
   
   
   
-      <article class="">
+      <article>
+      
+        <h3>Results</h3>
+        
+  <ul>
+  
+    <li>As the cumulative computational power that is available increases, the performance of the database is better</li>
+  
+    <li>The recommendation for running DGraph would be:</li>
+  
+  </ul>
+
+  
+  <div class="code"><pre>• Use as many cores as possible
+• Have the servers close by geographically so that network latency is reduced
+• Larger sized RAMs are not a necessity in server but are important in case of
+loader
+• Distribute the data among servers and query them in a round-robin fashion for
+greater throughput</pre></div>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
       
         <h3>Conclusion</h3>
         
   <ul>
   
-    <li>Performance of Distributed version is better under higher loads</li>
+    <li>Performance of Distributed version is better under higher loads [A couple hundred parallel connections]</li>
   
-    <li>Horizontal scalability is important in Modern databases and is supported through sharding</li>
+    <li>A single machine can only handle so much</li>
   
-    <li></li>
+    <li>Hence, horizontal scalability is important in modern databases and is supported through sharding</li>
   
   </ul>
 
+      
+      </article>
   
-  <p>
-    -
-  </p>
   
+  
+      <article>
+      
+        <h3>Further Work</h3>
+        
+  <ul>
+  
+    <li>Moving shards across machines</li>
+  
+    <li>Fault tolerance</li>
+  
+    <li>Replication</li>
+  
+    <li>Supporting GraphQL features</li>
+  
+  </ul>
 
       
       </article>
   
   
 
-      <article class="">
+      <article>
         <h3>Thank you</h3>
         
           <div class="presenter">
