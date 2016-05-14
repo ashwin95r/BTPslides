@@ -40,7 +40,7 @@ ashwin2007ray@gmail.com
 	- Support communication among the servers 
 	- Minimise the network calls made to process a query
 
-.caption _DGraph_ by [[http://github.com/dgraph-io/dgraph DGraph][DGraph]]
+.caption _DGraph_  [[http://github.com/dgraph-io/dgraph][DGraph]]
 
 * Overview
 	

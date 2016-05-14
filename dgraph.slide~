@@ -152,13 +152,14 @@ Subgraph format
 	- The queries used to test the performance were about 478,936 Actors and 98,063 Directors
 	- For each request, a query is randomly chosen
 
-* Throughput Comparison
-
-.image New_graphs/throughput/cores_thru.jpg _ 700
 
 * Throughput Comparison
 
 .image New_graphs/throughput/topo_thru.jpg _ 700
+
+* Throughput Comparison
+
+.image New_graphs/throughput/cores_thru.jpg _ 700
 
 * Latency Comparison
 
