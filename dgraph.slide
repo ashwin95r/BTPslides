@@ -1,7 +1,7 @@
 ﻿DGraph : A Graph Database
 Guide : Prof. Krishna Sivalingam
 17 May 2016
-Tags: go golang dgraph graph
+Tags: go golang DGraph graph
 
 Ashwin
 ashwin2007ray@gmail.com
@@ -51,16 +51,16 @@ ashwin2007ray@gmail.com
 
 * Background
 
-- Flatbuffers
+- Flatbuffer
 - RDF
 - Sharding
 - GraphQL
 
-* Flatbuffers
+* Flatbuffer
 
 - Efficient cross-platform serialisation library created by Google for performance critical application
-- DGraph uses Flatbuffers for all the communication, storage and internal representation.
-- Characteristics of Flatbuffers which make it very useful are:
+- DGraph uses Flatbuffer for all the communication, storage and internal representation.
+- Characteristics of Flatbuffer which make it very useful are:
 	- Access to serialised data without processing or unpacking
 	- Memory efficiency and speed
 	- Strongly typed 
@@ -221,4 +221,4 @@ Subgraph format
 - Moving shards across machines
 - Fault tolerance
 - Replication
-- Supporting GraphQL features
+- Supporting GraphQL featuresSS
