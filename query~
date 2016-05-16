@@ -1,0 +1,26 @@
+The query about an actor obtains the list of all the movies that the actor has acted in
+and looks like this:
+
+{
+	me ( _ x i d _ : XID ) {
+		t y p e . o b j e c t . name . en
+		film . actor . film {
+			film . performance . film {
+				t y p e . o b j e c t . name . en
+			}
+		}
+	}
+}
+
+The query about a director obtains the genre of all the movies directed by that person
+and looks like this:
+{
+	me ( _ x i d _ : XID ) {
+		t y p e . o b j e c t . name . en
+		film . director . film {
+			film . film . genre {
+				t y p e . o b j e c t . name . en
+			}
+		}
+	}
+}

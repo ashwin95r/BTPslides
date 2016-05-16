@@ -12,8 +12,8 @@ ashwin2007ray@gmail.com
 
 * What is DGraph
 
-- Open Source
-- Native, Distributed, Low latency, High throughput Graph Database
+- Open-source, Native, Low latency, High throughput Graph Database
+- Distributed and scalable after in v0.2
 - Written in Go-lang
 	- Highly Concurrent (go-routines, channels)
 	- Performance similar to C++
@@ -95,6 +95,9 @@ ashwin2007ray@gmail.com
 * Making it Distributed
 
 - Split loader into 2 phases : UID Assigner and Loader
+	- UID Assigner: Allots a unique uint64 ID to each node
+	- RocksDB Merger: Merges UID maps generated into a single global map
+	- Loader: Converts RDF file to Posting lists by using the UID map generated
 - Enable communication among servers through RPC and tcp connection pools
 - Batch writes which reduce the run-time of Loader
 
@@ -133,7 +136,7 @@ Subgraph format
 	- <m.050llt> <type.object.name> "Aishwarya Rai Bachchan"@hr .
 	- <m.0bxtg> <type.object.name> "Tom Hanks"@es .
 
-* Evaluation 
+* Performance Analysis 
 
 - Was done on GCE (Google Compute Engine) instances
 
@@ -148,10 +151,14 @@ Subgraph format
 	- Number of parallel connections
 	- Number of cores in an instance
 
-- *Queries*
-	- The queries used to test the performance were about 478,936 Actors and 98,063 Directors
-	- For each request, a query is randomly chosen
+* Queries
+- The queries used to test the performance were about 478,936 Actors and 98,063 Directors
+- For each request, a query and an entity are randomly chosen
 
+.code query
+
+* Queries
+.code query1
 
 * Throughput Comparison
 
@@ -197,7 +204,7 @@ Subgraph format
 - As the cumulative computational power that is available increases, the performance of the database is better
 - The recommendation for running DGraph would be:
 	• Use as many cores as possible
-	• Have the servers close by geographically so that network latency is reduced
+	• Have the servers geographically close-by so that network latency is reduced
 	• Larger sized RAMs are not a necessity in server but are important in case of
 	loader
 	• Distribute the data among servers and query them in a round-robin fashion for
