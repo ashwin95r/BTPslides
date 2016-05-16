@@ -1,0 +1,5 @@
+Shard 1							Shard 2
+ <alice> <enemy> <bob6> .		 <alice> <follows> <bob7> .
+ <alice> <enemy> <bob1> .		 <alice> <follows> <bob2> .
+ <alice> <enemy> <bob3> .		 <alice> <follows> <bob0> .
+ <alice> <enemy> <bob4> .		 <alice> <follows> <bob5> .
