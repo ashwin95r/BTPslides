@@ -1,7 +1,7 @@
 ﻿DGraph : A Graph Database
 Guide : Prof. Krishna Sivalingam
 17 May 2016
-Tags: go golang dgraph graph
+Tags: go golang DGraph graph
 
 Ashwin
 ashwin2007ray@gmail.com
@@ -13,7 +13,7 @@ ashwin2007ray@gmail.com
 * What is DGraph
 
 - Open-source, Native, Low latency, High throughput Graph Database
-- Distributed and scalable after in v0.2
+- Distributed and scalable from v0.2
 - Written in Go-lang
 	- Highly Concurrent (go-routines, channels)
 	- Performance similar to C++
@@ -51,16 +51,16 @@ ashwin2007ray@gmail.com
 
 * Background
 
-- Flatbuffers
+- Flatbuffer
 - RDF
 - Sharding
 - GraphQL
 
-* Flatbuffers
+* Flatbuffer
 
-- Efficient cross-platform serialisation library created by Google for performance critical application
-- DGraph uses Flatbuffers for all the communication, storage and internal representation.
-- Characteristics of Flatbuffers which make it very useful are:
+- Efficient cross-platform serialisation library created by Google for performance critical applications
+- DGraph uses Flatbuffer for all the communication, storage and internal representation.
+- Characteristics of Flatbuffer which make it very useful are:
 	- Access to serialised data without processing or unpacking
 	- Memory efficiency and speed
 	- Strongly typed 
@@ -77,12 +77,12 @@ ashwin2007ray@gmail.com
 * Sharding
 
 - Partitioning of a dataset into multiple data chunks based on some mathematical function
-- *Types*of*sharding* 
+- *Some*Types*of*sharding* 
 - *Range-based*sharding* : where the different ranges of the dataset are mapped to different shards
-- *Modulo*sharding* : where the key name is passed to a hash function to get an integer and this integer’s Modulo with the number of shards
+- *Modulo*sharding* : where the key name is passed to a hash function to get an integer and this integer’s Modulo with the number of shards gives the shard number
 
 * GraphQL
-- Is a query language and execution engine developed at Facebook
+- Query language and execution engine developed at Facebook
 - Limited support. Lexing and parsing done by DGraph to convert into internal query representation
 - By v1.0, most features of GraphQL would be supported
 - Example : Query for genre of all the movies directed by Steven Spielberg
@@ -94,11 +94,10 @@ ashwin2007ray@gmail.com
 
 * Making it Distributed
 
-- Split loader into 2 phases : UID Assigner and Loader
-	- UID Assigner : Allots a unique uint64 ID to each node
-	- RocksDB Merger : Merges UID maps generated into a single global map
-	- Loader : Converts RDF file to Posting lists
-- Enable communication among servers through RPC and tcp connection pools
+- Split loader into 2/3 phases : UID Assigner and Loader
+	- UID Assigner: Allots a unique uint64 ID to each node
+	- Loader: Converts RDF file to Posting lists by using the UID map generated
+- Enable communication among servers through RPC using TCP connection pools
 - Batch writes which reduce the run-time of Loader
 
 * Distributed Version
@@ -221,4 +220,4 @@ Subgraph format
 - Moving shards across machines
 - Fault tolerance
 - Replication
-- Supporting GraphQL features
+- Supporting GraphQL featuresSS
