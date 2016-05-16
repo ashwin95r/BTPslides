@@ -3,3 +3,11 @@
  <alice> <enemy> <bob1> .		 <alice> <follows> <bob2> .
  <alice> <enemy> <bob3> .		 <alice> <follows> <bob0> .
  <alice> <enemy> <bob4> .		 <alice> <follows> <bob5> .
+ 
+ 
+ -----------------------Posting List-------------------------
+PS1
+[enemy:alice] -> (bob1, bob3, bob4, bob6)
+
+PS2
+[follows:alice] -> (bob0, bob2, bob5, bob7)
