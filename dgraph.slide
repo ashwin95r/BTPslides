@@ -134,7 +134,7 @@ Subgraph format
 - Some examples of the predicates in Freebase film data are :
 	- type.object.name.en : Connects the object to its English name
 	- film.actor.film : Connects an actor to the film objects he has acted in
-- Some example of entries in the dataset are :
+- Some examples of entries in the dataset are :
 	- <m.0102j2vq> <film.actor.film> <m.011kyqsq> .
 	- <m.050llt> <type.object.name> "Aishwarya Rai Bachchan"@hr .
 	- <m.0bxtg> <type.object.name> "Tom Hanks"@es .
@@ -224,4 +224,4 @@ Subgraph format
 - Moving shards across machines
 - Fault tolerance
 - Replication
-- Supporting GraphQL featuresSS
+- Supporting more GraphQL features
